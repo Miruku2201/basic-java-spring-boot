@@ -4,6 +4,7 @@ import com.miruku.identity_service.Entity.User;
 import com.miruku.identity_service.Repository.UserRepository;
 import com.miruku.identity_service.dto.Request.UserCreationRequest;
 import com.miruku.identity_service.dto.Request.UserUpdateRequest;
+import com.miruku.identity_service.dto.Response.ApiResponse;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,8 @@ public class UserService {
         user.setName(request.getName());
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
-        return userRepository.save(user);
+
+        return user;
     }
 
     public List<User> getAllUsers(){

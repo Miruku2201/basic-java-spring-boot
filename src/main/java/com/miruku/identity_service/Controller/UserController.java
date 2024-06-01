@@ -4,6 +4,8 @@ import com.miruku.identity_service.Entity.User;
 import com.miruku.identity_service.Service.UserService;
 import com.miruku.identity_service.dto.Request.UserCreationRequest;
 import com.miruku.identity_service.dto.Request.UserUpdateRequest;
+import com.miruku.identity_service.dto.Response.ApiResponse;
+import org.hibernate.jdbc.Expectation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +18,10 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-     User createUser(@RequestBody UserCreationRequest request){
-        return userService.createUser(request);
+    ApiResponse<User> createUser(@RequestBody UserCreationRequest request){
+        ApiResponse<User> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.createUser(request));
+        return apiResponse;
     }
 
     @GetMapping
@@ -36,7 +40,10 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    void deleteUser(@PathVariable("userId") String userId){
+    ApiResponse<String> deleteUser(@PathVariable("userId") String userId){
         userService.deleteUser(userId);
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        apiResponse.setMessage("Delete user " + userId + "successfully");
+        return apiResponse;
     }
 }
