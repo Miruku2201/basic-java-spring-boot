@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserCreationRequest {
-    @Size(min = 4, message = "username is more than 3")
+    @Size(min = 4, message = "INVALID_USERNAME")
     String username;
-    @Size(min = 8, message = "password is more than 4")
+    @Size(min = 8, message = "INVALID_PASSWORD")
     String password;
 
     String name;

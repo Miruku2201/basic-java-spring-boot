@@ -1,6 +1,5 @@
 package com.miruku.identity_service.dto.Request;
 
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserUpdateRequest {
-    @Size(min = 8, message = "INVALID_PASSWORD")
+public class AuthenticationRequest {
+    private String username;
     private String password;
-
-    private String name;
 }
